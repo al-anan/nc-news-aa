@@ -6,7 +6,6 @@ export const ArticlesList = ({ topic }) => {
   const [articlesList, setArticlesList] = useState([]);
   useEffect(() => {
     fetchAllArticles().then((articlesFromApi) => {
-      console.log(articlesFromApi);
       setArticlesList(articlesFromApi);
     });
   }, []);
