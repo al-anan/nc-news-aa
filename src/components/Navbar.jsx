@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { fetchNavItems } from "../utils/api";
 
-export const Navbar = ({ setTopic }) => {
+export const Navbar = () => {
   const [navbar, setNavbar] = useState([]);
+
   useEffect(() => {
     fetchNavItems().then((navFromApi) => {
       setNavbar(navFromApi);
@@ -12,15 +13,14 @@ export const Navbar = ({ setTopic }) => {
 
   return (
     <nav className="nav-bar">
-      <Link className="nav-link" to="/" onClick={() => setTopic("all")}>
+      <Link className="nav-link" to="/articles">
         All Articles
       </Link>
       {navbar.map((navItem) => {
         return (
           <Link
             className="nav-link"
-            to={`/articles?topic=${navItem}`}
-            onClick={() => setTopic(navItem)}
+            to={`/articles/topic/${navItem}`}
             key={navItem}
           >
             {navItem}

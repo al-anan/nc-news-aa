@@ -12,14 +12,20 @@ export const fetchNavItems = () => {
   });
 };
 
-export const fetchAllArticles = () => {
-  return newsApi.get("/articles").then((res) => {
-    return res.data.articles;
-  });
+export const fetchArticles = (topic) => {
+  return newsApi
+    .get("/articles", {
+      params: {
+        topic: topic,
+      },
+    })
+    .then((res) => {
+      return res.data.articles;
+    });
 };
 
 export const fetchArticleById = (article_id) => {
   return newsApi.get(`/articles/${article_id}`).then((res) => {
-    return res.data.article;
+    return res.data;
   });
 };

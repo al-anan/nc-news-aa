@@ -1,8 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export const ArticleCard = ({ article }) => {
-  const handleClick = (article_id) => {
-    // redirect to Article component with passed id
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/articles/${article.article_id}`);
   };
 
   return (
