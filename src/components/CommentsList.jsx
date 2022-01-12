@@ -16,6 +16,7 @@ export const CommentsList = ({ article_id }) => {
         setIsLoading(false);
       })
       .catch((err) => {
+        setIsLoading(false);
         setError(err);
       });
   }, [article_id]);
