@@ -7,14 +7,27 @@ import { Subheading } from "./Subheading";
 export const ArticlesList = () => {
   const [articlesList, setArticlesList] = useState([]);
   const { slug } = useParams();
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchArticles(slug).then((articlesFromApi) => {
-      setArticlesList(articlesFromApi);
-    });
+    setIsLoading(true);
+    setError(null);
+    fetchArticles(slug)
+      .then((articlesFromApi) => {
+        setArticlesList(articlesFromApi);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setError(err);
+      });
   }, [slug]);
 
-  return (
+  return isLoading ? (
+    <p>Loading...</p>
+  ) : error ? (
+    <p>The following error occurred: {error}</p>
+  ) : (
     <>
       <Subheading text={slug ? `${slug} Articles` : "All Articles"} />
       <div className="articles-list">

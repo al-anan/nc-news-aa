@@ -6,14 +6,27 @@ import { CommentsList } from "./CommentsList";
 export const Article = () => {
   const [article, setArticle] = useState({});
   const { article_id } = useParams();
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchArticleById(article_id).then((articleFromApi) => {
-      setArticle(articleFromApi);
-    });
+    setIsLoading(true);
+    setError(null);
+    fetchArticleById(article_id)
+      .then((articleFromApi) => {
+        setArticle(articleFromApi);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setError(err);
+      });
   }, [article_id]);
 
-  return (
+  return isLoading ? (
+    <p>Loading...</p>
+  ) : error ? (
+    <p>The following error has occurred: {error}</p>
+  ) : (
     <div className="article">
       <h2>{article.title}</h2>
       <h3>By: {article.author}</h3>
