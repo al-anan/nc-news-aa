@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { fetchArticleById, patchArticleVotes } from "../utils/api";
 import { CommentsList } from "./CommentsList";
+import moment from "moment";
 
 export const Article = () => {
   const [article, setArticle] = useState({});
@@ -17,7 +18,6 @@ export const Article = () => {
     fetchArticleById(article_id)
       .then((articleFromApi) => {
         setArticle(articleFromApi);
-        console.log(articleFromApi);
         setVotes(articleFromApi.votes);
         setIsLoading(false);
       })
@@ -47,6 +47,9 @@ export const Article = () => {
       <h3>By: {article.author}</h3>
       <p>{article.body}</p>
       <p>Topic: {article.topic}</p>
+      <p>
+        Created {moment(article.created_at).format("MMMM Do YYYY, h:mm:ss a")}
+      </p>
       <button className="votes-btn" onClick={handleVotes}>
         Votes: {votes}
       </button>
