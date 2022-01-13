@@ -4,14 +4,17 @@ import { fetchNavItems } from "../utils/api";
 
 export const Navbar = () => {
   const [navbar, setNavbar] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
     fetchNavItems().then((navFromApi) => {
       setNavbar(navFromApi);
+      setIsLoading(false);
     });
   }, []);
 
-  return (
+  return isLoading ? null : (
     <nav className="nav-bar">
       <Link className="nav-link" to="/articles">
         All Articles
