@@ -53,7 +53,6 @@ export const Article = () => {
       <button className="votes-btn" onClick={handleVotes}>
         Votes: {votes}
       </button>
-      <p>Comment count: {article.comment_count}</p>
       <CommentsList article_id={article_id} />
     </div>
   );

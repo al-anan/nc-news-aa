@@ -43,3 +43,20 @@ export const patchArticleVotes = (article_id, value) => {
       return res.data;
     });
 };
+
+export const postComment = (article_id, body, username = "jessjelly") => {
+  return newsApi
+    .post(`/articles/${article_id}/comments`, {
+      username,
+      body,
+    })
+    .then((res) => {
+      return res.data;
+    });
+};
+
+export const deleteComment = (comment_id) => {
+  return newsApi.delete(`/comments/${comment_id}`).then((res) => {
+    return res;
+  });
+};
