@@ -7,8 +7,39 @@
   pointer-events: none;
 }
 
+.header {
+  border: 5px solid rgba(252, 29, 29, 0.952);
+  background-color: rgba(252, 29, 29, 0.952);
+}
+
+.main-header {
+  margin: 50px auto;
+  color: rgb(255, 255, 255);
+  font-weight: bolder;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+  cursor: pointer;
+  display: inline-block;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  background-color: rgb(255, 255, 255);
+}
+
 .nav-link {
   text-transform: capitalize;
+  color: rgba(252, 29, 29, 0.952);
+  font-weight: bolder;
+}
+
+.nav-link:hover {
+  color: green;
+}
+
+.nav-link:active {
+  color: green;
 }
 
 .comment-card,
