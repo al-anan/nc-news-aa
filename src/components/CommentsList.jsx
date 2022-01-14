@@ -24,7 +24,7 @@ export const CommentsList = ({ article_id }) => {
 
   const addComment = (newComment) => {
     setIsLoading(true);
-    comments.push(newComment);
+    comments.unshift(newComment);
     setComments(comments);
     setIsLoading(false);
   };

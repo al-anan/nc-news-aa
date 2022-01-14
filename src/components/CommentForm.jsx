@@ -8,7 +8,6 @@ export const CommentForm = ({ article_id, addComment }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setError(null);
-    console.log(event);
     postComment(article_id, newComment)
       .then((result) => {
         addComment(result);
@@ -32,7 +31,7 @@ export const CommentForm = ({ article_id, addComment }) => {
             onChange={(e) => setNewComment(e.target.value)}
           />
         </label>
-        <input type="submit" />
+        <input disabled={!newComment} type="submit" />
       </form>
     </>
   );
