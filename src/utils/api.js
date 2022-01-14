@@ -12,11 +12,13 @@ export const fetchNavItems = () => {
   });
 };
 
-export const fetchArticles = (topic) => {
+export const fetchArticles = (topic, sort_by, order) => {
   return newsApi
     .get("/articles", {
       params: {
-        topic: topic,
+        topic,
+        sort_by,
+        order,
       },
     })
     .then((res) => {

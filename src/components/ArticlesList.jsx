@@ -3,9 +3,14 @@ import { ArticleCard } from "./ArticleCard";
 import { fetchArticles } from "../utils/api";
 import { useParams } from "react-router-dom";
 import { Subheading } from "./Subheading";
+import { SortArticles } from "./SortArticles";
 
 export const ArticlesList = () => {
   const [articlesList, setArticlesList] = useState([]);
+  const [sortBy, setSortBy] = useState("created_at");
+  const [order, setOrder] = useState("desc");
+  const [selectedValue, setSelectedValue] = useState(0);
+
   const { slug } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -13,7 +18,7 @@ export const ArticlesList = () => {
   useEffect(() => {
     setIsLoading(true);
     setError(null);
-    fetchArticles(slug)
+    fetchArticles(slug, sortBy, order)
       .then((articlesFromApi) => {
         setArticlesList(articlesFromApi);
         setIsLoading(false);
@@ -21,7 +26,7 @@ export const ArticlesList = () => {
       .catch((err) => {
         setError(err);
       });
-  }, [slug]);
+  }, [slug, sortBy, order]);
 
   return isLoading ? (
     <p>Loading...</p>
@@ -29,6 +34,12 @@ export const ArticlesList = () => {
     <p>The following error occurred: {error}</p>
   ) : (
     <>
+      <SortArticles
+        setSortBy={setSortBy}
+        setOrder={setOrder}
+        selectedValue={selectedValue}
+        setSelectedValue={setSelectedValue}
+      />
       <Subheading text={slug ? `${slug} Articles` : "All Articles"} />
       <div className="articles-list">
         {articlesList.map((article, i) => {
