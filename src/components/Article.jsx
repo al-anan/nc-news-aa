@@ -47,9 +47,7 @@ export const Article = () => {
       <h3>By: {article.author}</h3>
       <p>{article.body}</p>
       <p>Topic: {article.topic}</p>
-      <p>
-        Created {moment(article.created_at).format("MMMM Do YYYY, h:mm:ss a")}
-      </p>
+      <p>Written on {moment(article.created_at).format("LL")}</p>
       <button className="votes-btn" onClick={handleVotes}>
         Votes: {votes}
       </button>
