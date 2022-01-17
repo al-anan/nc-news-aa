@@ -61,9 +61,10 @@ export const SortArticles = ({
   };
 
   return (
-    <>
-      <label htmlFor="sort-articles">Sort by</label>
+    <div className="dropdown form-group">
+      <label htmlFor="sort-articles">Sort articles:</label>
       <select
+        class="form-control"
         id="sort-articles"
         value={selectedValue}
         onChange={(event) => handleSorting(event.target.value)}
@@ -81,6 +82,6 @@ export const SortArticles = ({
         <option value={10}>By topic: A-Z</option>
         <option value={11}>By topic: Z-A</option>
       </select>
-    </>
+    </div>
   );
 };

@@ -26,6 +26,8 @@ nav {
   position: sticky;
   top: 0;
   background-color: rgb(255, 255, 255);
+  border-bottom: 1px solid rgba(148, 147, 147, 0.637);
+  z-index: 999;
 }
 
 .nav-link {
@@ -38,8 +40,26 @@ nav {
   color: green;
 }
 
-.nav-link:active {
-  color: green;
+.dropdown {
+  float: left;
+  padding-left: 25px;
+}
+
+.subheading {
+  text-transform: capitalize;
+  text-align: center;
+  display: inline;
+  float: right;
+  position: relative;
+  right: 45%;
+}
+
+.dropdown-articles-group {
+  overflow: auto;
+}
+
+.articles-list {
+  clear: both;
 }
 
 .comment-card,

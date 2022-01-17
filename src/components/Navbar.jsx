@@ -15,7 +15,7 @@ export const Navbar = () => {
   }, []);
 
   return isLoading ? null : (
-    <nav className="nav nav-tabs nav-fill">
+    <nav className="nav nav-justified">
       <Link className="nav-link" to="/articles">
         All Articles
       </Link>
