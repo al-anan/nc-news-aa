@@ -62,6 +62,11 @@ nav {
   clear: both;
 }
 
+.article-card {
+  cursor: pointer;
+  display: inline-block;
+}
+
 .comment-card,
 .article-card {
   border: 1px solid black;

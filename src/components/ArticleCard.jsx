@@ -10,15 +10,26 @@ export const ArticleCard = ({ article }) => {
   };
 
   return (
-    <div className="article-card" onClick={handleClick}>
-      <p>
-        {moment(article.created_at).format("LL")}
-        {article.title}
-        Written by {article.author}
-        Topic: {article.topic}
-        Comments: {article.comment_count}
-        Votes: {article.votes}
-      </p>
+    <div className="col-sm-4">
+      <div
+        className="article-card card text-center mb-5 w-100"
+        onClick={handleClick}
+      >
+        <div className="card-header text-muted">
+          {moment(article.created_at).format("LL")}
+        </div>
+        <div className="card-body">
+          <h5 className="card-title">{article.title}</h5>
+        </div>
+        <p className="card-text">
+          Written by {article.author}
+          <br />
+          Topic: {article.topic}
+        </p>
+        <div className="card-footer text-muted">
+          Comments: {article.comment_count} Votes: {article.votes}
+        </div>
+      </div>
     </div>
   );
 };

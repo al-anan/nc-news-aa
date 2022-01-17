@@ -61,7 +61,7 @@ export const SortArticles = ({
   };
 
   return (
-    <div className="dropdown form-group">
+    <div className="col-lg-2 col-12 form-group">
       <label htmlFor="sort-articles">Sort articles:</label>
       <select
         class="form-control"

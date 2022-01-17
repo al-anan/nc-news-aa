@@ -34,19 +34,21 @@ export const ArticlesList = () => {
     <p>The following error occurred: {error}</p>
   ) : (
     <>
-      <div className="dropdown-articles-group py-4">
-        <SortArticles
-          setSortBy={setSortBy}
-          setOrder={setOrder}
-          selectedValue={selectedValue}
-          setSelectedValue={setSelectedValue}
-        />
-        <Subheading text={slug ? `${slug} Articles` : "All Articles"} />
-      </div>
-      <div className="articles-list">
-        {articlesList.map((article, i) => {
-          return <ArticleCard article={article} key={i} />;
-        })}
+      <div className="container">
+        <div className="row dropdown-articles-group py-4">
+          <SortArticles
+            setSortBy={setSortBy}
+            setOrder={setOrder}
+            selectedValue={selectedValue}
+            setSelectedValue={setSelectedValue}
+          />
+          <Subheading text={slug ? `${slug} Articles` : "All Articles"} />
+        </div>
+        <div className="articles-list row d-flex justify-content-center">
+          {articlesList.map((article, i) => {
+            return <ArticleCard article={article} key={i} />;
+          })}
+        </div>
       </div>
     </>
   );
